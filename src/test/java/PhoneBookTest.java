@@ -50,7 +50,7 @@ public class PhoneBookTest {
         String name1 = "Petya",
                 name2 = "Vanya",
                 phoneNumber1 = "1111",
-                expectedFoundNumber1 = "Petya",
+                expectedFoundNumber1 = "1111",
                 expectedFoundNumber2 = null;
 
         phoneBook.add(name1, phoneNumber1);

@@ -15,18 +15,19 @@ public class PhoneBook {
         }
     }
 
+    //Выводит несколько имен, если у них одинаковый номер
     String findByNumber(String number) {
         if (phoneBook.containsValue(number)) {
-            List<Map.Entry<String, String>> names = phoneBook.entrySet().stream()
+            return phoneBook.entrySet().stream()
                     .filter(x -> x.getValue().equals(number))
-                    .toList();
-            return names.stream().map(Map.Entry::getKey).reduce((x, y) -> x + ",\n" + y).get();
+                    .map(Map.Entry::getKey)
+                    .reduce((x, y) -> x + ",\n" + y).get();
         } else {
             return null;
         }
     }
 
-    String findByName (String name){
-        return "";
+    String findByName(String name) {
+        return phoneBook.getOrDefault(name, null);
     }
 }
