@@ -64,7 +64,7 @@ public class PhoneBookTest {
     }
 
     @Test
-    void testForPrintAllNames() {
+    void testForPrintAllNames() throws Exception {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         PrintStream printStream = new PrintStream(outputStream);
         System.setOut(printStream);
@@ -72,8 +72,10 @@ public class PhoneBookTest {
                 name2 = "Petya",
                 phoneNumber1 = "1111",
                 phoneNumber2 = "2222",
-                expectedOutput = "Petya, Vanya";
+                expectedOutput = "Petya, Vanya\n";
 
+        phoneBook.add(name1, phoneNumber1);
+        phoneBook.add(name2, phoneNumber2);
         phoneBook.printAllNames();
 
         Assertions.assertEquals(expectedOutput, outputStream.toString());

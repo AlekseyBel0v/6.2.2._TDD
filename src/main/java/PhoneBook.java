@@ -31,5 +31,10 @@ public class PhoneBook {
     }
 
     void printAllNames () {
+        if (!phoneBook.isEmpty()) {
+            System.out.println(phoneBook.keySet().stream().reduce((x, y) -> x + ", " + y).get());
+        } else {
+            System.out.println("Контакты еще не созданы");
+        }
     }
 }
