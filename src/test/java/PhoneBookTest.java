@@ -2,8 +2,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
+import java.io.*;
+
 public class PhoneBookTest {
-    PhoneBook phoneBook = new PhoneBook();
+    private PhoneBook phoneBook = new PhoneBook();
 
     @Test
     void testByAdditionNewContact() throws Exception {
@@ -59,5 +61,21 @@ public class PhoneBookTest {
 
         Assertions.assertEquals(expectedFoundNumber1, foundNumber1);
         Assertions.assertEquals(expectedFoundNumber2, foundNumber2);
+    }
+
+    @Test
+    void testForPrintAllNames() {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        PrintStream printStream = new PrintStream(outputStream);
+        System.setOut(printStream);
+        String name1 = "Vanya",
+                name2 = "Petya",
+                phoneNumber1 = "1111",
+                phoneNumber2 = "2222",
+                expectedOutput = "Petya, Vanya";
+
+        phoneBook.printAllNames();
+
+        Assertions.assertEquals(expectedOutput, outputStream.toString());
     }
 }

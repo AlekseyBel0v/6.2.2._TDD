@@ -1,9 +1,8 @@
-import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
 public class PhoneBook {
-    Map<String, String> phoneBook = new TreeMap<>();
+    private Map<String, String> phoneBook = new TreeMap<>();
 
     int add(String name, String number) throws Exception {
         if (phoneBook.containsKey(name)) {
@@ -29,5 +28,8 @@ public class PhoneBook {
 
     String findByName(String name) {
         return phoneBook.getOrDefault(name, null);
+    }
+
+    void printAllNames () {
     }
 }
