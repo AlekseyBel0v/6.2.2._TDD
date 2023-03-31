@@ -28,4 +28,20 @@ public class PhoneBookTest {
 
         Assertions.assertThrows(Exception.class, executable);
     }
+
+    @Test
+    void testForFindByNumber() throws Exception {
+        String name1 = "Petya",
+                phoneNumber1 = "1111",
+                phoneNumber2 = "2222",
+                expectedFoundName1 = "Petya",
+                expectedFoundName2 = null;
+
+        phoneBook.add(name1, phoneNumber1);
+        String foundName1 = phoneBook.findByNumber(phoneNumber1);
+        String foundName2 = phoneBook.findByNumber(phoneNumber2);
+
+        Assertions.assertEquals(expectedFoundName1, foundName1);
+        Assertions.assertEquals(expectedFoundName2, foundName2);
+    }
 }
