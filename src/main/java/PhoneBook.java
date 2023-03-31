@@ -16,14 +16,13 @@ public class PhoneBook {
     }
 
     String findByNumber(String number) {
-        return null;
-    }
-
-        String findByName (String name){
-            return "";
-        }
-
-        void printAllNames () {
-
+        if (phoneBook.containsValue(number)) {
+            List<Map.Entry<String, String>> names = phoneBook.entrySet().stream()
+                    .filter(x -> x.getValue().equals(number))
+                    .toList();
+            return names.stream().map(Map.Entry::getKey).reduce((x, y) -> x + ",\n" + y).get();
+        } else {
+            return null;
         }
     }
+}
